@@ -1,0 +1,19 @@
+## System Architecture
+
+1. **Object-Oriented Design**: I can represent my filesystem as a hierarchical tree of Python objects. Each object can be either a `Site`, a `Client`, or a `File`. The `Site` objects will have multiple `Client` objects as children, and each `Client` will have multiple `File` objects. This will facilitate navigation and management operations.
+
+2. **Command Parsing**: To interact with the filesystem, I will need to create a simple command parser that can translate user input into calls to the filesystem API.
+
+## Implementation Steps
+
+1. **Defining the Base Class**: Start by creating a base `Node` class to represent a node in the filesystem. This class will have common properties like `name`, `parent`, `children`.
+
+2. **Site, Client and File Classes**: Define `Site`, `Client`, and `File` classes that inherit from `Node`. The `Site` and `Client` classes will contain a list of child nodes, while the `File` class might contain additional data (like its content).
+
+3. **File System Operations**: Implement methods on these classes for each operation that I want to support. This will include methods like `add_child`, `delete_child`, `rename`, `move`, `copy`, etc.
+
+4. **Admin and User Rights Management**: Each client has a `role` attribute which can be either `admin` or `user`. Implement logic that allows only admins to perform certain operations, such as managing the file system.
+
+5. **Command Parsing**: Create a `CommandParser` class that takes user input, parses it into a command and arguments, and then calls the appropriate method on the filesystem.
+
+6. **FTP Integration**: To handle old versions of files, I'll need to integrate with an FTP server. Python has a built-in `ftplib` library that I can use for this. When a file is changed, save the old version of the file to the FTP server. Structure the FTP directories in a similar way to my local filesystem, so each client has their own directory and each region has its own subdirectory.

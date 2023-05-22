@@ -1,0 +1,17 @@
+For this part we need to think further to understand the implementation of permissions in our code.
+So far, We created a class node to have a hierachical tree where the class "site" sits on top of our tree, and we also have 3 others classes "Client, Directory and File".
+The only notion of security that were previously introduced are protection of a file (or directory) and ownership.
+
+*** New notions of access rights management ***
+
+1 - Group Rights:
+	We want to create groups to have more flexible way of managing permissions and inheritance.
+	
+2 - RWX system:
+	Like in most OS, we want to permit some users to only read, while other to write or even execute
+	
+3 - Inheritance of Permissions:
+	Now with the current system of permissions, the desing has a flaw, which is that we don't have a clear policy on the inheritance of permissions
+	
+4 - Audit logs:
+	This is a bonus, but it will track all the new change that can occur on a file
