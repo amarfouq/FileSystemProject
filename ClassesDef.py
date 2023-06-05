@@ -26,6 +26,7 @@ class Node:
         self.parent = parent
         self.children = {}
         self.protected = protected
+        self.permissions = {}
     
     # Return the site we are in on a specific node by going to the top level until it 
     # reaches a site
@@ -194,6 +195,36 @@ class Node:
 
         # Add the new_node to new_parent's children
         new_parent.add_child(client, new_node)
+    
+    # Give a specific permission to a client or group.
+    def add_permission(self, client_or_group, permission_type):
+        
+        if client_or_group not in self.permissions:
+            self.permissions[client_or_group] = set()
+
+        self.permissions[client_or_group].add(permission_type)
+
+    # Revoke a specific permission from a client or group.
+    def remove_permission(self, client_or_group, permission_type):
+        
+        
+        if client_or_group in self.permissions:
+            self.permissions[client_or_group].discard(permission_type)
+
+    # Check if the client has a specific type of permission on the node.
+    def has_permission(self, client, permission_type):
+
+        if client in self.permissions and permission_type in self.permissions[client]:
+            return True
+
+        # Check if any of the client's groups have the permission
+        for group in client.groups:
+            if group in self.permissions and permission_type in self.permissions[group]:
+                return True
+
+        return False
+
+
 
 # This class define what a site is but for now we don't need any additionnal methods
 class Site(Node):
@@ -208,6 +239,7 @@ class Client(Node):
         super().__init__(name, parent, protected)
         self.is_admin = is_admin
         self.is_super_admin = is_super_admin
+        self.groups = set()
 
 # This class define what a directory is
 class Directory(Node):
@@ -222,3 +254,20 @@ class File(Node):
         super().__init__(name, parent, protected)
         self.content = content
         self.owner = owner
+
+
+
+# This class will helps us to introduce the notion of group rights    
+class Group:
+    def __init__(self, name):
+        self.name = name
+        self.clients = set()
+
+    def add_client(self, client):
+        self.clients.add(client)
+
+    def remove_client(self, client):
+        self.clients.remove(client)
+
+    def has_client(self, client):
+        return client in self.clients

@@ -1,0 +1,44 @@
+1 - Create Directory:
+
+Command: mkdir
+Syntax: mkdir <directory_name>
+
+2 - Create File:
+
+Command: touch
+Syntax: touch <file_name>
+
+3 - List Contents:
+
+Command: ls
+Syntax: ls [<directory_name>]
+
+4 - Change Directory:
+
+Command: cd
+Syntax: cd <directory_name>
+
+5 - Move/Rename Object:
+
+Command: mv
+Syntax: mv <source_name> <destination_name>
+
+6 - Copy Object:
+
+Command: cp
+Syntax: cp <source_name> <destination_name>
+
+7 - Delete Object:
+
+Command: rm
+Syntax: rm <object_name>
+
+8 - Show Object Details:
+
+Command: info
+Syntax: info <object_name>
+
+9 - Set Permissions:
+
+Command: chmod
+Syntax: chmod <object_name> <permission>

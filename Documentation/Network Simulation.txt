@@ -1,0 +1,16 @@
+1 - File System Architecture: I would need to design my file system in a way that allows 
+for distributed storage and synchronization across multiple sites. This could involve implementing 
+mechanisms for replication, consistency, and synchronization of files across the different sites.
+
+2 - Network Communication: My file system would need to handle network communication 
+between the different sites. This includes sending updates, file transfers, and synchronization 
+messages between the sites. I can leverage the networking capabilities of Mininet to simulate this communication.
+
+3 -Timing and Synchronization: Since I mentioned that updates should propagate to other sites 
+every day, I would need to implement a mechanism to schedule and trigger synchronization events 
+at the desired intervals. This could involve using timers, scheduling tasks, or 
+coordinating synchronization through a central controller.
+
+4 - Network Topology: I would need to define the network topology in Mininet to match my desired 
+site configuration. This includes creating virtual hosts and switches for each site and connecting 
+them in a way that reflects the network layout I want to simulate.
